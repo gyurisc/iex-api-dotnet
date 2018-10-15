@@ -3,12 +3,10 @@ Unofficial API for using the IEX Trading service
 
 Currently still work in-progress
 
-
 ## Todo
 
-To Do:
-
 Define types and definitions for specific API operations:
+
 - Stocks
 - Quote
 - Chart
@@ -28,11 +26,14 @@ Define types and definitions for specific API operations:
 - Logo
 - Price
 - Delayed Quote
- - List
- - Effective Spread
- - Volume by Venue
+- List
+- Effective Spread
+- Volume by Venue
+
 Reference Data
+
  - Symbols
+ 
 IEX Market Data
  - TOPS
  - Last
@@ -47,11 +48,15 @@ IEX Market Data
  - Security Event
  - Trade Break
  - Auction
+ 
 IEX Stats
+
  - Intraday
  - Recent
  - Records
  - Historical Summary
- -Historical Daily
+ - Historical Daily
+ 
 Markets
+
 - Market
