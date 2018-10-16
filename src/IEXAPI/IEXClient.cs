@@ -11,7 +11,7 @@ namespace IEXAPI
 
         public List<SymbolReferenceData> GetSymbols()
         {
-            var endpoint = GetEndpoint("/ref-data/symbols");
+            var endpoint = GetUrl("/ref-data/symbols");
             var response = GetResponseForUrl(endpoint);
 
             if (response.IsSuccessStatusCode)
@@ -23,9 +23,42 @@ namespace IEXAPI
             return new List<SymbolReferenceData>();
         }
 
-        private string GetEndpoint(string endpoint)
+        public Company GetCompany(string symbol)
+        {
+            var url = GetUrl("/stock/{0}/company", symbol);
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var companyData = response.Content.ReadAsAsync<Company>().GetAwaiter().GetResult();
+                return companyData;
+            }
+
+            return null;
+        }
+
+        public Quote GetStockQuote(string symbol)
+        {
+            var url = GetUrl("/stock/{0}/quote", symbol);
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var quote = response.Content.ReadAsAsync<Quote>().GetAwaiter().GetResult();
+                return quote;
+            }
+
+            return null;
+        }
+
+        private string GetUrl(string endpoint)
         {
             return api_root + endpoint;
+        }
+
+        private string GetUrl(string endpoint, string symbol)
+        {
+            return api_root + string.Format(endpoint, symbol);
         }
 
         public static HttpResponseMessage GetResponseForUrl(string url)
