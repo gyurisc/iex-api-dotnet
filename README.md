@@ -10,11 +10,11 @@ Define types and definitions for specific API operations:
 - Stocks
 - Quote
 - Chart
-- Batch Requests
+- ~~Batch Requests~~
 - Book
 - Open / Close
 - Previous
-- Company
+- ~~Company~~
 - Key Stats
 - Peers
 - Relevant
@@ -32,7 +32,7 @@ Define types and definitions for specific API operations:
 
 Reference Data
 
- - Symbols
+ - ~~Symbols~~
  
 IEX Market Data
  - TOPS
