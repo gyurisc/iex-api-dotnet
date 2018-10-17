@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXAPI", "src\api\IEXAPI.csproj", "{76235C12-B868-43E3-877E-8B9C800F183D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXAPI.Tests", "src\tests\IEXAPI.Tests.csproj", "{094C2328-32EB-4D41-8F9E-04ED45D8692A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{76235C12-B868-43E3-877E-8B9C800F183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76235C12-B868-43E3-877E-8B9C800F183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76235C12-B868-43E3-877E-8B9C800F183D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094C2328-32EB-4D41-8F9E-04ED45D8692A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094C2328-32EB-4D41-8F9E-04ED45D8692A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094C2328-32EB-4D41-8F9E-04ED45D8692A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094C2328-32EB-4D41-8F9E-04ED45D8692A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
