@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 
@@ -26,7 +27,8 @@ namespace IEXAPI
 
         public Company GetCompany(string symbol)
         {
-            var url = GetUrl($"/stock/{symbol}/company");
+            var symbolEncoded = WebUtility.UrlEncode(symbol);
+            var url = GetUrl($"/stock/{symbolEncoded}/company");
             var response = GetResponseForUrl(url);
 
             if (response.IsSuccessStatusCode)
@@ -40,7 +42,8 @@ namespace IEXAPI
 
         public Quote GetStockQuote(string symbol)
         {
-            var url = GetUrl($"/stock/{symbol}/quote");
+            var symbolEncoded = WebUtility.UrlEncode(symbol);
+            var url = GetUrl($"/stock/{symbolEncoded}/quote");
             var response = GetResponseForUrl(url);
 
             if (response.IsSuccessStatusCode)
@@ -63,9 +66,9 @@ namespace IEXAPI
             {
                 throw new ArgumentException("types parameter cannot be null!");
             }
-
-            var symbolList = string.Join(",", symbols);
-            var typeList = string.Join(",", types);
+              
+            var symbolList = WebUtility.UrlEncode(string.Join(",", symbols));
+            var typeList = WebUtility.UrlEncode(string.Join(",", types));
             var url = GetUrl($"/stock/market/batch?symbols={symbolList}&types={typeList}");
 
             var response = GetResponseForUrl(url);
