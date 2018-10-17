@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 
@@ -25,7 +26,7 @@ namespace IEXAPI
 
         public Company GetCompany(string symbol)
         {
-            var url = GetUrl("/stock/{0}/company", symbol);
+            var url = GetUrl($"/stock/{symbol}/company");
             var response = GetResponseForUrl(url);
 
             if (response.IsSuccessStatusCode)
@@ -39,7 +40,7 @@ namespace IEXAPI
 
         public Quote GetStockQuote(string symbol)
         {
-            var url = GetUrl("/stock/{0}/quote", symbol);
+            var url = GetUrl($"/stock/{symbol}/quote");
             var response = GetResponseForUrl(url);
 
             if (response.IsSuccessStatusCode)
@@ -51,14 +52,36 @@ namespace IEXAPI
             return null;
         }
 
+        public List<BatchResult> GetBatchData(string[] symbols, string[] types)
+        {
+            if (symbols == null)
+            {
+                throw new ArgumentException("symbols parameter cannot be null!");
+            }
+
+            if (types == null)
+            {
+                throw new ArgumentException("types parameter cannot be null!");
+            }
+
+            var symbolList = string.Join(",", symbols);
+            var typeList = string.Join(",", types);
+            var url = GetUrl($"/stock/market/batch?symbols={symbolList}&types={typeList}");
+
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var companyDataList = response.Content.ReadAsAsync<Dictionary<string, BatchResult>>().GetAwaiter().GetResult();
+                return companyDataList.Values.ToList();
+            }
+
+            return new List<BatchResult>();
+        }
+
         private string GetUrl(string endpoint)
         {
             return api_root + endpoint;
-        }
-
-        private string GetUrl(string endpoint, string symbol)
-        {
-            return api_root + string.Format(endpoint, symbol);
         }
 
         public static HttpResponseMessage GetResponseForUrl(string url)
