@@ -66,6 +66,16 @@ namespace IEXAPI
             {
                 throw new ArgumentException("types parameter cannot be null!");
             }
+
+            if (types.Count() > 10)
+            {
+                throw new ArgumentException("Only 10 different type parameter supported per call.");
+            }
+
+            if (symbols.Count() > 100)
+            {
+                throw new ArgumentException("Symbol limit exceeded. Only 100 symbols can be specified per call.");
+            }
               
             var symbolList = WebUtility.UrlEncode(string.Join(",", symbols));
             var typeList = WebUtility.UrlEncode(string.Join(",", types));
