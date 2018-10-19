@@ -23,8 +23,8 @@ Usage
 string symbol = "msft";
 
 var iex = new IEXClient();
-
 var company = iex.GetCompany(symbol);
+
 if (company != null)
 {
 	Console.WriteLine($"{company.companyName} - ({company.symbol})");
@@ -37,9 +37,9 @@ if (company != null)
 ```csharp
 string symbol = "msft";
 
-var iex = new IEXClient();
-            
+var iex = new IEXClient();           
 var quote = iex.GetStockQuote(symbol);
+
 if (quote != null)
 {
     Console.WriteLine($"Price: {quote.LatestPrice:C}");           
@@ -54,8 +54,7 @@ if (quote != null)
 ```csharp
 string symbol = "msft";
 
-var iex = new IEXClient();
-            
+var iex = new IEXClient();            
 var divs = iex.GetDividend(symbol, Range.OneYear);
 
 if (divs != null)
