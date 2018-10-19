@@ -21,7 +21,7 @@ Define types and definitions for specific API operations:
 - News
 - Financials
 - Earnings
-- Dividends
+- ~~Dividends~~
 - Splits
 - Logo
 - Price

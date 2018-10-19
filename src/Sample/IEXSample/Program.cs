@@ -27,6 +27,17 @@ namespace IEXSample
                 Console.WriteLine($"Change: {quote.Change} ({quote.ChangePercent:P})");
                 Console.WriteLine($"52 Week Range: {quote.Week52Low:C}-{quote.Week52High:C}");
             }
+
+            var divs = iex.GetDividend("msft", Range.OneYear);
+
+            if (divs != null)
+            {
+                Console.WriteLine("Dividends:");
+                foreach (var div in divs)
+                {
+                    Console.WriteLine($"{div.RecordDate:dd-MMM-yyy} - {div.Amount:C}");
+                }
+            }
         }
     }
 }

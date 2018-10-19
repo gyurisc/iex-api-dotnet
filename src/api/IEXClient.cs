@@ -55,6 +55,34 @@ namespace IEXAPI
             return null;
         }
 
+        public List<Dividend> GetDividend(string symbol, Range queryRange)
+        {
+            if (string.IsNullOrEmpty(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be empty!");
+            }
+
+            var symbolEncoded = WebUtility.UrlEncode(symbol);
+            var rangeParam = queryRange.GetDescription();
+
+            if (string.IsNullOrEmpty(rangeParam))
+            {
+                throw new ArgumentException("Wrong range parameter! Failed to convert to strign value");
+            }
+
+            var url = GetUrl($"/stock/{symbolEncoded}/dividends/{rangeParam}");
+
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var divList = response.Content.ReadAsAsync<List<Dividend>>().GetAwaiter().GetResult();
+                return divList;
+            }
+
+            return null;
+        }
+
         public List<BatchResult> GetBatchData(string[] symbols, string[] types)
         {
             if (symbols == null)
