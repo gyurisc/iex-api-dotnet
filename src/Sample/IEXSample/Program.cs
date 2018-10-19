@@ -28,7 +28,7 @@ namespace IEXSample
                 Console.WriteLine($"52 Week Range: {quote.Week52Low:C}-{quote.Week52High:C}");
             }
 
-            var divs = iex.GetDividend("msft", Range.OneYear);
+            var divs = iex.GetDividend(symbol, Range.OneYear);
 
             if (divs != null)
             {
