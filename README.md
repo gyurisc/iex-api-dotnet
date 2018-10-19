@@ -17,19 +17,57 @@ The IEX API Documentations can be found here: (IEX API Documentation)[https://ie
 Usage
 ----- 
 
+### Company information 
+
 ```csharp
-	string symbol = "msft";
+string symbol = "msft";
 
-	var iex = new IEXClient();
+var iex = new IEXClient();
 
-	var company = iex.GetCompany(symbol);
-	if (company != null)
-	{
-		Console.WriteLine($"{company.companyName} - ({company.symbol})");
-		Console.WriteLine($"CEO: {company.CEO}");
-		Console.WriteLine($"Website: {company.website}");
-	}
+var company = iex.GetCompany(symbol);
+if (company != null)
+{
+	Console.WriteLine($"{company.companyName} - ({company.symbol})");
+	Console.WriteLine($"CEO: {company.CEO}");
+	Console.WriteLine($"Website: {company.website}");
+}
 ```
+
+### Price information 
+```csharp
+string symbol = "msft";
+
+var iex = new IEXClient();
+            
+var quote = iex.GetStockQuote(symbol);
+if (quote != null)
+{
+    Console.WriteLine($"Price: {quote.LatestPrice:C}");           
+    Console.WriteLine($"Open-Close: {quote.Open:C}-{quote.Close:C}");
+    Console.WriteLine($"Change: {quote.Change} ({quote.ChangePercent:P})");
+    Console.WriteLine($"52 Week Range: {quote.Week52Low:C}-{quote.Week52High:C}");
+}
+```
+
+### Dividends
+
+```csharp
+string symbol = "msft";
+
+var iex = new IEXClient();
+            
+var divs = iex.GetDividend(symbol, Range.OneYear);
+
+if (divs != null)
+{
+    Console.WriteLine("Dividends:");
+    foreach (var div in divs)
+    {
+        Console.WriteLine($"{div.RecordDate:dd-MMM-yyy} - {div.Amount:C}");
+    }
+}
+```
+
 Todo
 ----
 
