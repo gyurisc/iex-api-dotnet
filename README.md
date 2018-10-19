@@ -1,16 +1,37 @@
-# iex-api-dotnet
+iex-api-dotnet
+==============
+
 Unofficial API for using the IEX Trading service
 
 Currently still work in-progress
 
-## IEX
+IEX
+-----
 
 IEX is the stock exchange built for investors and companies.
 
 The IEX API is a set of services designed for developers and engineers. It can be used to build high-quality apps and services. We’re always working to improve the IEX API. Please check back for enhancements and improvements.
 
 The IEX API Documentations can be found here: (IEX API Documentation)[https://iextrading.com/developer/docs/]
-## Todo
+
+Usage
+----- 
+
+```csharp
+	string symbol = "msft";
+
+	var iex = new IEXClient();
+
+	var company = iex.GetCompany(symbol);
+	if (company != null)
+	{
+		Console.WriteLine($"{company.companyName} - ({company.symbol})");
+		Console.WriteLine($"CEO: {company.CEO}");
+		Console.WriteLine($"Website: {company.website}");
+	}
+```
+Todo
+----
 
 Define types and definitions for specific API operations:
 
