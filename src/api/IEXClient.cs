@@ -83,6 +83,37 @@ namespace IEXAPI
             return null;
         }
 
+        public List<News> GetNews(string symbol, int last = -1)
+        {
+            if (string.IsNullOrEmpty(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be empty!");
+            }
+
+            var symbolEncoded = WebUtility.UrlEncode(symbol);
+            var url = GetUrl($"/stock/{symbolEncoded}/news");
+
+            if (last > 50)
+            {
+                throw new ArgumentException("Last parameter cannot be larger than 50");
+            }
+
+            if (last > 0)
+            {
+                url += $"/latest/{last}";
+            }
+
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var newsList = response.Content.ReadAsAsync<List<News>>().GetAwaiter().GetResult();
+                return newsList;
+            }
+
+            return null;
+        }
+
         public List<BatchResult> GetBatchData(string[] symbols, string[] types)
         {
             if (symbols == null)
