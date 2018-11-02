@@ -80,10 +80,10 @@ Define types and definitions for specific API operations:
 - Open / Close
 - Previous
 - ~~Company~~
-- Key Stats
+- ~~Key Stats~~
 - Peers
 - Relevant
-- News
+- ~~News~~
 - Financials
 - Earnings
 - ~~Dividends~~

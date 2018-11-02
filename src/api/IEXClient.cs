@@ -114,6 +114,27 @@ namespace IEXAPI
             return null;
         }
 
+        public KeyStat GetStats(string symbol)
+        {
+            if (string.IsNullOrEmpty(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be empty!");
+            }
+
+            var symbolEncoded = WebUtility.UrlEncode(symbol);
+            var url = GetUrl($"/stock/{symbolEncoded}/stats");
+
+            var response = GetResponseForUrl(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var stat = response.Content.ReadAsAsync<KeyStat>().GetAwaiter().GetResult();
+                return stat;
+            }
+
+            return null;
+        }
+
         public List<BatchResult> GetBatchData(string[] symbols, string[] types)
         {
             if (symbols == null)

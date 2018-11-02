@@ -27,7 +27,7 @@ namespace IEXAPI
         public long? ShortInterest { get; set; }
 
         [JsonProperty("shortDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? ShortDate { get; set; }
+        public long? ShortDate { get; set; }
 
         [JsonProperty("dividendRate", NullValueHandling = NullValueHandling.Ignore)]
         public decimal? DividendRate { get; set; }
