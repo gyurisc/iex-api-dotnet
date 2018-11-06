@@ -36,7 +36,7 @@ namespace IEXAPI
         public decimal? DividendYield { get; set; }
 
         [JsonProperty("exDividendDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? ExDividendDate { get; set; }
+        public string ExDividendDate { get; set; }
 
         [JsonProperty("latestEPS", NullValueHandling = NullValueHandling.Ignore)]
         public long? LatestEps { get; set; }

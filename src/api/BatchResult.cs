@@ -8,5 +8,6 @@ namespace IEXAPI
     {
         public Company company { get; set; }
         public Quote quote { get; set; }
+        public KeyStat stats { get; set; }
     }
 }
