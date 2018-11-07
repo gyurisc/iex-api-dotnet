@@ -27,7 +27,7 @@ namespace IEXAPI
         public long? ShortInterest { get; set; }
 
         [JsonProperty("shortDate", NullValueHandling = NullValueHandling.Ignore)]
-        public long? ShortDate { get; set; }
+        public string ShortDate { get; set; }
 
         [JsonProperty("dividendRate", NullValueHandling = NullValueHandling.Ignore)]
         public decimal? DividendRate { get; set; }
@@ -42,7 +42,7 @@ namespace IEXAPI
         public long? LatestEps { get; set; }
 
         [JsonProperty("latestEPSDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? LatestEpsDate { get; set; }
+        public string LatestEpsDate { get; set; }
 
         [JsonProperty("sharesOutstanding", NullValueHandling = NullValueHandling.Ignore)]
         public long? SharesOutstanding { get; set; }
@@ -87,10 +87,10 @@ namespace IEXAPI
         public decimal? TtmEps { get; set; }
 
         [JsonProperty("revenuePerShare", NullValueHandling = NullValueHandling.Ignore)]
-        public long? RevenuePerShare { get; set; }
+        public string RevenuePerShare { get; set; }
 
         [JsonProperty("revenuePerEmployee", NullValueHandling = NullValueHandling.Ignore)]
-        public long? RevenuePerEmployee { get; set; }
+        public string RevenuePerEmployee { get; set; }
 
         [JsonProperty("peRatioHigh", NullValueHandling = NullValueHandling.Ignore)]
         public decimal? PeRatioHigh { get; set; }

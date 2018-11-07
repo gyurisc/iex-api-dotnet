@@ -168,8 +168,18 @@ namespace IEXAPI
 
             if (response.IsSuccessStatusCode)
             {
-                var companyDataList = response.Content.ReadAsAsync<Dictionary<string, BatchResult>>().GetAwaiter().GetResult();
-                return companyDataList.Values.ToList();
+                try
+                {
+                    var companyDataList = response.Content.ReadAsAsync<Dictionary<string, BatchResult>>().GetAwaiter().GetResult();
+                    return companyDataList.Values.ToList();
+                }
+                catch (Exception excp)
+                {
+                    var json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    Console.WriteLine(json);
+                    throw excp;
+                }
+
             }
 
             return new List<BatchResult>();
