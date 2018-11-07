@@ -176,7 +176,12 @@ namespace IEXAPI
                 catch (Exception excp)
                 {
                     var json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    Console.WriteLine(json);
+                    BatchCallException bce = new BatchCallException(excp.Message, excp.InnerException);
+
+                    bce.Json = json;
+                    bce.Symbols = symbols;
+                    bce.Types = types;
+
                     throw excp;
                 }
 
